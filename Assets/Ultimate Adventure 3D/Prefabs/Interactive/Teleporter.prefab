@@ -165,6 +165,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  impactEffect: {fileID: 241552662958318704, guid: 60051a4de25516d41a6ee8e5d8b4a9fe, type: 3}
+  IsResieved: 0
 --- !u!1 &1437348684319690
 GameObject:
   m_ObjectHideFlags: 0

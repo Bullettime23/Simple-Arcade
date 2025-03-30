@@ -4,6 +4,7 @@ using SimpleFPS;
 public class Teleporter : MonoBehaviour
 {
     [SerializeField] private Teleporter target;
+    [SerializeField] private GameObject impactEffect;
 
     [HideInInspector] public bool IsResieved;
 
@@ -18,6 +19,8 @@ public class Teleporter : MonoBehaviour
             target.IsResieved = true;
 
             fps.transform.position = target.transform.position;
+
+            Instantiate(impactEffect);
         }
     }
 
