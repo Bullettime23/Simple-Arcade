@@ -1,10 +1,17 @@
 using SimpleFPS;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class SpringPlatform : MonoBehaviour
 {
-    [SerializeField] float jumpForce = 5;
+    [SerializeField] private float jumpForce = 5;
     private float jumpForceInitial;
+    private new AudioSource audio;
+
+    private void Start()
+    {
+        audio = gameObject.GetComponent<AudioSource>();
+    }
     private void OnTriggerEnter(Collider other)
     {
         FirstPersonController fpc = other.GetComponent<FirstPersonController>();
@@ -14,6 +21,8 @@ public class SpringPlatform : MonoBehaviour
             jumpForceInitial = fpc.m_JumpSpeed;
             fpc.m_JumpSpeed += jumpForce;
             fpc.m_Jump = true;
+
+            audio.Play();
         }
     }
     private void OnTriggerExit(Collider other)

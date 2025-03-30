@@ -7,4 +7,14 @@ public class SceneHelper : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public void LoadLevel(int buildIndex)
+    {
+        SceneManager.LoadScene(buildIndex);
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
 }
