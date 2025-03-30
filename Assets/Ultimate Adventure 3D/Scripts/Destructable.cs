@@ -17,18 +17,17 @@ public class Destructable : MonoBehaviour
     public void ApplyDamage(int damage)
     {
         hitPoints -= damage;
+        ChangeHitpoints.Invoke();
 
         if(hitPoints <= 0)
         {
             Kill();
-            ChangeHitpoints.Invoke();
         }
     }
 
     public void Kill()
     {
         hitPoints = 0;
-        ChangeHitpoints.Invoke();
         Die.Invoke();
     }
 
