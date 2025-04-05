@@ -7,7 +7,9 @@ public class Destructable : MonoBehaviour
 
     public UnityEvent Die;
     public UnityEvent ChangeHitpoints;
+    [SerializeField] private GameObject damageSound;
     private int hitPoints;
+    private GameObject damageImpactEffect;
 
     private void Start()
     {
@@ -18,6 +20,8 @@ public class Destructable : MonoBehaviour
     {
         hitPoints -= damage;
         ChangeHitpoints.Invoke();
+
+        PlayPlayerHurtSound();
 
         if(hitPoints <= 0)
         {
@@ -43,6 +47,8 @@ public class Destructable : MonoBehaviour
 
     public void Kill()
     {
+        PlayPlayerHurtSound();
+
         hitPoints = 0;
         Die.Invoke();
     }
@@ -55,5 +61,13 @@ public class Destructable : MonoBehaviour
     public int GetMaxHitpoints()
     {
         return maxHitPoints;
+    }
+
+    private void PlayPlayerHurtSound()
+    {
+        if (damageSound != null && damageImpactEffect == null)
+        {
+            damageImpactEffect = Instantiate(damageSound);
+        }
     }
 }
